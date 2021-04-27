@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="styles/style.css">
+    <title> Events App </title>
+  </head>
+
+  <body>
+    <div class="container">
+      <br>
+      <h1> Make A New Event! </h1>
+      <br>
+      <div class="new-evt-container">
+        <form id="new-event-form">
+          <input type="text" name="event-title" id="new-event-title">
+          <input type="submit" value="Save event">
+        </form>
+      </div>
+      <br>
+      <br>
+      <br>
+      <h3>Your Events: </h3>
+      <div id="events-content">
+        <ul id="event-container">
+
+        </ul>
+        <div id="event-show">
+
+        </div>
+      </div>
+    </div>
+    <script src="src/components/events.js"> </script>
+    <script src="src/components/event.js"> </script>
+    <script src="src/components/app.js"> </script>
+    <script src="src/adapters/EventsAdapter.js"> </script>
+    <script src="src/adapters/MemoryAdapter.js"> </script>
+    <script src="src/index.js"> </script>
+  </body>
+</html>

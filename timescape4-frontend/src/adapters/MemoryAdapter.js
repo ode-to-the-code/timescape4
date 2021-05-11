@@ -16,4 +16,24 @@ class MemoryAdapter {
   }
 
 
+    createMemory(value){
+      const memory = {
+        content: value,
+      }
+
+
+       return fetch(this.baseUrl, {
+        method: 'POST',
+        headers: {
+          "content-type": "application/json"
+        },
+        body: JSON.stringify({ memory: memory })
+      }).then(res => {
+        console.log("success")
+        return res.json()
+      })
+    }
+
+
+
 }

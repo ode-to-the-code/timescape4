@@ -9,7 +9,8 @@ class Event {
     this.setMemories()
     this.memories = []
     this.state = {
-      memoriesVisibility: false
+      memoriesVisibility: false,
+      newMemoryText: ""
     }
   }
 
@@ -30,10 +31,30 @@ class Event {
   }
 
 
+  addMemory() {
+    this.memoryAdapter.createMemory(this.state.newMemoryText)
+    const memory = document.createElement('li')
+    memory.innerHTML = this.state.newMemoryText
+    this.memoryContainer.append(memory)
+  }
+
   renderEventWithMemories(){
     this.state.memoryVisibility = !this.state.memoryVisibility
     if (this.state.memoryVisibility) {
       this.memoryContainer.innerHTML = '<ul>' + this.memories.map(memoryTemplate).join('') + '</ul>'
+      const createMemoryButton = document.createElement('button')
+      createMemoryButton.innerHTML = "Add Memory"
+      const createMemoryInput = document.createElement('input')
+      createMemoryInput.addEventListener('change', (e) => {
+        const value = e.target.value
+        this.state.newMemoryText = value
+      })
+      createMemoryButton.addEventListener('click', () => {
+        this.addMemory();
+      })
+      const children = this.memoryContainer.childNodes
+      this.memoryContainer.insertBefore(createMemoryInput, children[0])
+      this.memoryContainer.insertBefore(createMemoryButton, children[0])
     } else {
       this.memoryContainer.innerHTML = ''
     }

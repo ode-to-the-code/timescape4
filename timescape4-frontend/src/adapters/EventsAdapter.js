@@ -16,7 +16,8 @@ class EventsAdapter {
       title: value,
     }
 
-    return fetch(this.baseUrl, {
+
+     return fetch(this.baseUrl, {
       method: 'POST',
       headers: {
         "content-type": "application/json"
@@ -25,7 +26,6 @@ class EventsAdapter {
     }).then(res => {
       return res.json()
     })
-
   }
 
 

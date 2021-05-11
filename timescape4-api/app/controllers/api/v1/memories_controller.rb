@@ -12,9 +12,16 @@ class Api::V1::MemoriesController < ApplicationController
   end
 
   def create
+    puts "memory params"
+    puts memory_params
+
     memory = Memory.create(memory_params)
-    render json: memory, status: 200
-  end
+    if memory.save
+       render json: memory, status: 200
+    end
+      render json: {errors: memory.errors.full_messages}, status: :unprocessable_entity
+    end
+
 
   def event_memories
     memories = Memory.where(event_id: params[:event_id]).all

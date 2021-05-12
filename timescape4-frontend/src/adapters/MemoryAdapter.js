@@ -30,6 +30,8 @@ class MemoryAdapter {
         body: JSON.stringify({ memory: memory })
       }).then(res => {
         console.log("success")
+        console.log("res", res)
+
         return res.json()
       })
     }

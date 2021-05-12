@@ -24,21 +24,68 @@
 
 ----------
 
+//
+//
+// createEvent(e){
+//   e.preventDefault()
+//   const value = this.newEventTitle.value
+// // when you return the fetch in events adapter, you get a promise to chain
+// // to the then here
+// // there's an alternative where you have
+//   // -'then' runs when the other promise is resolved. not like setTimeout
+//   // -async await can be good to avoid lots of 'then's
+//   this.adapter.createEvent(value).then(event => {
+//     const newEvent = new Event(event)
+//     this.events.push(newEvent)
+//     this.newEventTitle.value = ''
+// // this is adding the list item to the actual browser page
+//     this.renderOne(newEvent)
+//   })
+// }
 
 
-createEvent(e){
-  e.preventDefault()
-  const value = this.newEventTitle.value
-// when you return the fetch in events adapter, you get a promise to chain
-// to the then here
-// there's an alternative where you have
-  // -'then' runs when the other promise is resolved. not like setTimeout
-  // -async await can be good to avoid lots of 'then's
-  this.adapter.createEvent(value).then(event => {
-    const newEvent = new Event(event)
-    this.events.push(newEvent)
-    this.newEventTitle.value = ''
-// this is adding the list item to the actual browser page
-    this.renderOne(newEvent)
-  })
+
+-------------------
+
+
+renderEventWithMemories(){
+  this.state.memoryVisibility = !this.state.memoryVisibility
+  if (this.state.memoryVisibility) {
+    this.memoryContainer.innerHTML = '<ul>' + this.memories.map(memoryTemplate).join('') + '</ul>'
+    const createMemoryButton = document.createElement('button')
+    createMemoryButton.innerHTML = "Add Memory"
+    const createMemoryInput = document.createElement('input')
+    createMemoryInput.addEventListener('change', (e) => {
+      const value = e.target.value
+      this.state.newMemoryText = value
+    })
+    createMemoryButton.addEventListener('click', () => {
+      this.addMemory();
+    })
+    const children = this.memoryContainer.childNodes
+    this.memoryContainer.insertBefore(createMemoryInput, children[0])
+    this.memoryContainer.insertBefore(createMemoryButton, children[0])
+  } else {
+    this.memoryContainer.innerHTML = ''
+  }
+
+  console.log("---------------- this.title", this )
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+if (this.state.memoryVisibility) {
+  
 }

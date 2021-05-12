@@ -28,6 +28,7 @@ class Api::V1::MemoriesController < ApplicationController
     render json: memories, status: 200
   end
 
+
   private
     def memory_params
       params.require(:memory).permit(:content)

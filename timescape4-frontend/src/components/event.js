@@ -4,7 +4,7 @@ class Event {
     this.id = eventJSON.id
     this.title = eventJSON.title
     this.liEl = document.createElement('li')
-    this.memoryContainer = document.createElement('article')
+    this.memoryContainer = document.createElement('ul')
     this.memoryAdapter = new MemoryAdapter()
     this.setMemories()
     this.memories = []

@@ -1,23 +1,6 @@
 class Api::V1::EventsController < ApplicationController
 
 
-# notes
-# eager loading vs lazy loading- mass vs precision, one grabs everything
-# each time while the other is more about what and when you need something
-#
-# an ability to create a memory that's associated with an event. and when we see
-# an event we can see its associated memories. depending on how its done, you want
-# to use a serializer like the fastjson api. (any backend setup uses a serializer)
-#
-# practice adding an event listener and how to update the dom from the event listener
-# like when you click show memory, what it takes for that to work is to grab memories from
-# the backend and update them to the dom. when you click a show memory button it can't be triggering
-# all of them, its better to grab memories for that event
-#
-# this is the good stuff about js, the event listeners and stuff
-#
-# good way to practice is just create some new buttons and see how you update the DOM;
-# being aware of where data is at various times,
 
   def index
     events = Event.all

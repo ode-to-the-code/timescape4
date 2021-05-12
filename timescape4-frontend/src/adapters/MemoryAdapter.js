@@ -16,9 +16,10 @@ class MemoryAdapter {
   }
 
 
-    createMemory(value){
+    createMemory(value, event_id){
       const memory = {
         content: value,
+        event_id: event_id
       }
 
 
@@ -29,6 +30,7 @@ class MemoryAdapter {
         },
         body: JSON.stringify({ memory: memory })
       }).then(res => {
+
         console.log("success")
         console.log("res", res)
 

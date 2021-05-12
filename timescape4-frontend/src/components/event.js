@@ -22,8 +22,25 @@ class Event {
     this.liEl.appendChild(this.memoryContainer)
     showButton.addEventListener('click', x => this.renderEventWithMemories())
     showButton.innerText = 'Show Memory'
+
+// i wonder I can't access the event object from the delete button or deleteEvent method?
+    let deleteEventButton = document.createElement('button')
+    deleteEventButton.innerHTML = "Delete"
+    this.liEl.appendChild(deleteEventButton)
+    deleteEventButton.addEventListener("click", () => {
+      this.deleteEvent();
+    })
+
     return this.liEl
   }
+
+
+  deleteEvent(){
+    console.log("this.id", this.id)
+
+  }
+
+
 
   setMemories(){
     this.memoryAdapter.getMemoriesByEventId(this.id)
@@ -32,7 +49,9 @@ class Event {
 
 
   addMemory() {
-    this.memoryAdapter.createMemory(this.state.newMemoryText)
+    // have to add the event id to the memory somewhere. like memory.event_id = this.id ?
+    const event_id = this.id
+    this.memoryAdapter.createMemory(this.state.newMemoryText, event_id)
     const memory = document.createElement('li')
     memory.innerHTML = this.state.newMemoryText
     this.memoryContainer.append(memory)

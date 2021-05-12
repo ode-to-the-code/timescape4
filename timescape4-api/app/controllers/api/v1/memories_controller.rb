@@ -12,10 +12,11 @@ class Api::V1::MemoriesController < ApplicationController
   end
 
   def create
-    puts "memory params"
-    puts memory_params
-
-    memory = Memory.create(memory_params)
+    #puts "memory_params[:content]:"
+    #puts memory_params[:content]
+    # byebug
+     memory = Memory.create(memory_params)
+    #memory = Memory.create(memory_params[:content])
     if memory.save
        render json: memory, status: 200
     end
@@ -31,7 +32,7 @@ class Api::V1::MemoriesController < ApplicationController
 
   private
     def memory_params
-      params.require(:memory).permit(:content)
+      params.require(:memory).permit(:content, :event_id)
     end
 
 

@@ -45,4 +45,13 @@ class EventsAdapter {
 
   }
 
+
+
+  deleteEvent(id){
+    console.log("delete event")
+  }
+
+
+
+
 }

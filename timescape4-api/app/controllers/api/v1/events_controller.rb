@@ -34,6 +34,7 @@ class Api::V1::EventsController < ApplicationController
 
   def destroy
   # maybe i can add a message alert for the front when something is deleted
+    puts "hit destroy action"
     event = Event.find(params[:id])
     event.delete
     render json: {eventId: event.id}

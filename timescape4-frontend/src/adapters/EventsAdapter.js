@@ -49,6 +49,18 @@ class EventsAdapter {
 
   deleteEvent(id){
     console.log("delete event")
+
+
+    return fetch(`${this.baseUrl}/${id}`, {
+      method: 'DELETE',
+      headers: {
+        "content-type": "application/json"
+      },
+      body: JSON.stringify({ event })
+    }).then(res => res.json())
+
+
+
   }
 
 

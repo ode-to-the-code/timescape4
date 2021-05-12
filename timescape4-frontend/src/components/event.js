@@ -6,6 +6,7 @@ class Event {
     this.liEl = document.createElement('li')
     this.memoryContainer = document.createElement('ul')
     this.memoryAdapter = new MemoryAdapter()
+    this.eventAdapter = new EventsAdapter()
     this.setMemories()
     this.memories = []
     this.state = {
@@ -37,7 +38,7 @@ class Event {
 
   deleteEvent(){
     console.log("this.id", this.id)
-
+    this.eventAdapter.deleteEvent(this.id);
   }
 
 
